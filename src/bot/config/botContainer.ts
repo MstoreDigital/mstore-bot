@@ -3,4 +3,4 @@ import { Bot } from '@bot'
 
 container.register('Bot', { useClass: Bot })
 
-export { container }
+export { container as botContainer }

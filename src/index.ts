@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { container } from '@config'
+import { botContainer } from '@bot/config'
 import { Bot } from '@bot'
 
-container.resolve<Bot>('Bot').start()
+botContainer.resolve<Bot>('Bot').start()
