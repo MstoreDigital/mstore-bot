@@ -27,6 +27,12 @@
     /* Module Resolution Options */
     "moduleResolution": "node",
     "baseUrl": "./",
+    "paths": {
+      "@config": ["src/config/index.ts"],
+      "@bot": ["src/bot/index.ts"],
+      "@bot/*": ["src/bot/*"],
+      "@api/*": ["src/api/*"]
+    },
     "esModuleInterop": true,
 
     /* Experimental Options */
