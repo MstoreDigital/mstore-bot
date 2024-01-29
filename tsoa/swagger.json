@@ -1,0 +1,69 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {},
+		"securitySchemes": {
+			"api": {
+				"type": "apiKey",
+				"name": "apiKey",
+				"in": "query"
+			}
+		}
+	},
+	"info": {
+		"title": "mstore-bot",
+		"version": "1.0.0",
+		"contact": {}
+	},
+	"paths": {
+		"/api/v1/hello": {
+			"get": {
+				"operationId": "HelloWorld",
+				"responses": {
+					"200": {
+						"description": "",
+						"content": {
+							"application/json": {
+								"schema": {
+									"properties": {
+										"message": {
+											"type": "string",
+											"enum": [
+												"Hello world!"
+											],
+											"nullable": false
+										}
+									},
+									"required": [
+										"message"
+									],
+									"type": "object"
+								}
+							}
+						}
+					}
+				},
+				"description": "See a hello world",
+				"tags": [
+					"Bot"
+				],
+				"security": [
+					{
+						"apiKey": []
+					}
+				],
+				"parameters": []
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
