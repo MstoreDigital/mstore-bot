@@ -1,11 +1,11 @@
 {
   "name": "mstore-bot",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "build/src/index.js",
   "scripts": {
     "dev": "ts-node -r tsconfig-paths/register src/index.ts",
     "build": "tsc",
-    "start": "node build/src/app.js",
+    "start": "node build/src/index.js",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint ./src",
