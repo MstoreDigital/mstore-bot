@@ -18,5 +18,6 @@ export class Bot {
 		await this.client.login(env['DISCORD_BOT_TOKEN'])
 		await this.client.application?.commands.set(commands)
 		console.log(`> [bot] registered ${commands.length} commands with success`)
+		return this
 	}
 }
