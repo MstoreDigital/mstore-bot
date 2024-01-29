@@ -28,12 +28,14 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
+			"tsoa": ["node_modules/tsoa/dist"],
       "@api": ["src/api/index.ts"],
       "@bot": ["src/bot/index.ts"],
       "@config": ["src/config/index.ts"],
       "@utils": ["src/utils"],
       "@bot/*": ["src/bot/*"],
-      "@api/*": ["src/api/*"]
+      "@api/*": ["src/api/*"],
+      "@tsoa-build/*": ["tsoa/*"]
     },
     "esModuleInterop": true,
 
