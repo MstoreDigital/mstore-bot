@@ -15,14 +15,8 @@
   },
   "routes": {
     "iocModule": "src/config/ioc.ts",
+    "controllerPathGlobs": ["src/api/controller/**/*Controller.ts"],
     "routesDir": "tsoa",
     "authenticationModule": "./src/api/middlewares/authentication.ts"
-  },
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@api": "src/api",
-      "@tsoa-build": "tsoa"
-    }
   }
 }

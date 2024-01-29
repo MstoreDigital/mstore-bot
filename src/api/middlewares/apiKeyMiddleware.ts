@@ -3,6 +3,8 @@ import { env } from '@config'
 
 export async function apiKeyMiddleware(req: ExRequest, res: ExResponse) {
 	const apiKey = req.query['apiKey']
+	console.log(req.query)
+	console.log(apiKey)
 	if (apiKey !== env['API_KEY']) {
 		return res.status(403).json({ error: 'UNAUTHORIZED_KEY' })
 	}
