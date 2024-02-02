@@ -2,7 +2,7 @@ import { Request as ExRequest, Response as ExResponse } from 'express'
 import { env } from '@config'
 
 export async function apiKeyMiddleware(req: ExRequest, res: ExResponse) {
-	const apiKey = req.query['apiKey']
+	const apiKey = req.query['access_token']
 	console.log(req.query)
 	console.log(apiKey)
 	if (apiKey !== env['API_KEY']) {
