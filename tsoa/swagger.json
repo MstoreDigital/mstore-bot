@@ -10,7 +10,7 @@
 		"securitySchemes": {
 			"api": {
 				"type": "apiKey",
-				"name": "apiKey",
+				"name": "access_token",
 				"in": "query"
 			}
 		}
