@@ -15,9 +15,14 @@ export class Bot {
 	async start() {
 		await registerEvents(this.client)
 		const commands = await registerCommands(this.client)
+		console.log('> [bot] Bot starting discord login...')
 		await this.client.login(env['DISCORD_BOT_TOKEN'])
 		await this.client.application?.commands.set(commands, mstore['GUILD_ID'])
-		console.log(`> [bot] registered ${commands.length} commands with success`)
+		console.log(`> [bot] Registered ${commands.length} commands with success in the API!`)
 		return this
+	}
+
+	async stop() {
+		await this.client.destroy()
 	}
 }

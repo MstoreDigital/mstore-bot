@@ -13,42 +13,45 @@ import swaggerUi from 'swagger-ui-express'
 import cors from 'cors'
 
 @singleton()
-export class App {
+export class Api {
 	private static instance: Application
 	private static server: Server<typeof IncomingMessage, typeof ServerResponse>
 
 	constructor() {
-		App.instance = express()
-		App.config()
-		App.routes()
+		console.log('> [api] Api started the configuration...')
+		Api.instance = express()
+		Api.config()
+		Api.routes()
+		console.log('> [api] Api configured with success!')
 	}
 
-	public start(): App {
-		App.server = App.instance.listen(env['PORT'] as string, () => {
-			console.log(`> [api] App listening at the port ${env['PORT']}`)
+	public start(): Api {
+		console.log('> [api] Api starting to listen...')
+		Api.server = Api.instance.listen(env['PORT'] as string, () => {
+			console.log(`> [api] Api listening at the port ${env['PORT']}!`)
 		})
 		return this
 	}
 	public stop(): void {
-		App.server.close()
+		Api.server.close()
 	}
 	private static config(): void {
-		App.instance.use(urlencoded({ extended: true }))
-		App.instance.use(json())
-		App.instance.use(cors({
+		Api.instance.use(urlencoded({ extended: true }))
+		Api.instance.use(json())
+		Api.instance.use(cors({
 			allowedHeaders: ['Authorization', 'Content-Type'],
 			exposedHeaders: '*',
 			credentials: true,
 			methods: 'GET,OPTIONS,PUT,PATCH,POST,DELETE',
 			origin: env['BACK_END_BASE_URL']
 		}))
-		App.instance.disable('x-powered-by')
+		Api.instance.disable('x-powered-by')
 	}
 
 	private static routes(): void {
-		App.instance.use('/api/v1/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
+		Api.instance.use('/api/v1/docs', swaggerUi.serve, async (_req: ExRequest, res: ExResponse) => {
 			return res.send(swaggerUi.generateHTML(await import('@tsoa-build/swagger.json')))
 		})
-		RegisterRoutes(App.instance)
+		RegisterRoutes(Api.instance)
 	}
 }
