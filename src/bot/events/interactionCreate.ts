@@ -1,5 +1,6 @@
-import { DiscordEvent } from '@bot/interfaces/discordEvent'
 import { ButtonInteraction, ChatInputCommandInteraction, Events, Interaction } from 'discord.js'
+import { DiscordEvent } from '@bot/interfaces/discordEvent'
+import { responses } from '@bot/res'
 
 export const event: DiscordEvent = {
 	type: 'on',
@@ -9,7 +10,7 @@ export const event: DiscordEvent = {
 		if(interaction.isChatInputCommand()) {
 			await chatInputCommandExecute(interaction)
 		} else if(interaction.isButton()) {
-			buttonInteractionExecute(interaction)
+			await buttonInteractionExecute(interaction)
 		}
 	},
 }
@@ -19,10 +20,10 @@ async function chatInputCommandExecute(interaction: ChatInputCommandInteraction)
 	try {
 		await command.execute(interaction)
 	} catch(error: any) {
-		await interaction.reply({ content: 'error in command execution', ephemeral: true })
+		await interaction.reply({ content: 'Error in command execution', ephemeral: true })
 	}
 }
-function buttonInteractionExecute(interaction: ButtonInteraction) {
-	console.log(interaction)
+async function buttonInteractionExecute(interaction: ButtonInteraction) {
+	await responses[interaction.customId as keyof typeof responses](interaction)
 }
 
