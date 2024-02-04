@@ -29,6 +29,8 @@
       "@utils": ["src/utils"],
       "@bot/*": ["src/bot/*"],
       "@api/*": ["src/api/*"],
+      "@translations": ["src/bot/translations/index.ts"],
+      "@res": ["src/bot/res/index.ts"],
       "@tsoa-build/*": ["tsoa/*"]
     }
   }
