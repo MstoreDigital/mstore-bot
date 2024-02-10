@@ -10,6 +10,7 @@ export const clientOptions = {
 		IntentsBitField.Flags.GuildPresences,
 		IntentsBitField.Flags.GuildMembers,
 		IntentsBitField.Flags.GuildMessageReactions,
+		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.Guilds
 	], partials: [ 
 		Partials.User,

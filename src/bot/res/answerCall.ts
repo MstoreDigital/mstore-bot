@@ -6,4 +6,5 @@ export const answerCall: DiscordButtonResponse = async ({ message, guild, user }
 	const thread = activeThreads?.threads.find(thread => thread.name === threadName)
 	await thread?.members.add(user)
 	await thread?.send(`<@${user.id}>`)
+	await message.delete()
 }
