@@ -1,6 +1,5 @@
 import { ButtonInteraction } from 'discord.js'
-import { callSupport } from './callSupport'
-import { answerCall } from './answerCall'
+import { callSupport, answerCall } from './utils'
 
 export type DiscordButtonResponse = (interaction: ButtonInteraction) => Promise<void>
 

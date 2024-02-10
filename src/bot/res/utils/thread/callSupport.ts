@@ -1,5 +1,6 @@
-import { ActionRowBuilder, ButtonBuilder, ChannelType, ForumChannel, MediaChannel, TextChannel, ButtonStyle, EmbedBuilder, Message } from 'discord.js'
+import { ActionRowBuilder, ButtonBuilder, ChannelType, ForumChannel, MediaChannel, TextChannel, ButtonStyle, Message } from 'discord.js'
 import { DiscordButtonResponse } from '@bot/res'
+import { translations } from '@bot/translations'
 import { mstore } from '@bot/constants'
 
 export const callSupport: DiscordButtonResponse = async ({ user, guild, channelId, locale }) => {
@@ -9,20 +10,25 @@ export const callSupport: DiscordButtonResponse = async ({ user, guild, channelI
 		type: ChannelType.PrivateThread
 	} as any)
 	await thread?.members.add(user)
-	await thread?.send(`<@${user.id}> você tem até 60 minutos para responder as perguntas que lhe serão feitas, com base nelas nós iremos conseguir encontrar alguém capaz de te ajudar!`)
+	let steps = 0, lang: string = locale
+	if (!['en-US', 'pt-BR'].includes(locale)) lang = 'en-US'
+	const translate = translations[lang as keyof typeof translations]['utils']['thread']['callSupport']
+	
+	await thread?.send(translate['startMessage'].replace('{userId}', user.id))
+	let content = translate['supportMessage'].replace('{userId}', user.id).replace('{language}', lang)
 
-	let steps = 0
-	const embed = new EmbedBuilder()
-		.setAuthor({ name: user.username })
-		.addFields({ name: 'language', value: locale, inline: true })
 	const questions = [
 		{
-			question: 'Digite um título que descreva a sua situação?',
-			action: (title: string) => { embed.setTitle(title) }
+			question: translate['question1'],
+			action: (product: string) => { content = content.replace('{product}', product) }
 		},
 		{
-			question: 'Qual foi o problema com o qual você se deparou?',
-			action: (description: string) => { embed.setDescription(description) }
+			question: translate['question2'],
+			action: (problemType: string) => { content = content.replace('{problemType}', problemType) }
+		},
+		{
+			question: translate['question3'],
+			action: (problemDescription: string) => { content = content.replace('{problemDescription}', problemDescription) }
 		}
 	]
 	
@@ -42,18 +48,14 @@ export const callSupport: DiscordButtonResponse = async ({ user, guild, channelI
 
 	async function finishCallHelp() {
 		collector.stop()
-		await thread.send('Finalizamos o seu pedido por ajuda, pedimos para que aguarde, você logo será atendido.')
+		await thread.send(translate['supportRequested'])
 		const answerCallButton = new ButtonBuilder()
 			.setCustomId('answer_call')
-			.setLabel('Answer call')
+			.setLabel(translate['answerCallLabel'])
 			.setStyle(ButtonStyle.Primary)
 		const row = new ActionRowBuilder<ButtonBuilder>().addComponents(answerCallButton)
 		
 		const answerCall = guild?.channels.cache.get(mstore['ANSWER_CHANNEL_CALL_ID']) as TextChannel
-		await answerCall.send({
-			content: `New call: help-${user.id}`,
-			embeds: [embed],
-			components: [row]
-		}).then((m) => console.log(m))
+		await answerCall.send({ content, components: [row] })
 	}
 }
