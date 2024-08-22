@@ -27,6 +27,9 @@ const commands = {
 			answerCall: {
 				supportEnter: '<@{userToSupportId}>, o membro do suporte: <@{userId}> entrou no chat.'
 			}
+		},
+		close: {
+			channelTypeInvalid: 'O comando não pode ser usado nesse canal.'
 		}
 	}
 }
