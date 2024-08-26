@@ -29,7 +29,16 @@ const commands = {
 			}
 		},
 		close: {
-			channelTypeInvalid: 'The command cannot be used in this channel.'
+			channelTypeInvalid: 'The command cannot be used in this channel.',
+			closureReasonRequestMessage: 'Please provide the reason for closing the ticket:',
+			historyMessage: 
+				'**Ticket ID:** {id}'+
+				'\n\n**Date of service:** `{createdAt}`'+
+				'\n**User:** `@{username}` \ `ID: {userId}`'+
+				'\n**Responsible moderator:** `@{userTag}` \ `ID: {moderatorId}`'+
+				'\n**Reason for closure:** ```{reason}```',
+			channelNotFound: 'Could not find the history channel.',
+			reasonNotProvided: 'You did not provide a reason for closing the ticket. The channel will not be closed.'
 		}
 	}
 }
