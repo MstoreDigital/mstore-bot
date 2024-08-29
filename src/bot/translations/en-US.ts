@@ -27,6 +27,20 @@ const commands = {
 			answerCall: {
 				supportEnter: '<@{userToSupportId}>, support member: <@{userId}> joined the chat.'
 			}
+		},
+		close: {
+			channelTypeInvalid: 'The command cannot be used in this channel.',
+			closureReasonRequestMessage: 'Please provide the reason for closing the ticket:',
+			historyMessage: 
+				'**Ticket ID: ** {id}'+
+				'\n\n**Channel Name: ** `{channelName}`'+
+				'\n**Date of service: ** `{createdAt}`'+
+				'\n**User: ** {username}'+
+				'\n**Responsible moderator: ** {moderatorName}'+
+				'\n**Support closed by: ** {closedBy}'+
+				'\n**Reason for closure: ** ```{reason}```',
+			moderatorUnknown: 'Not assigned',
+			ticketClosed: "Support closed successfully! The channel will be closed in 5 seconds."
 		}
 	}
 }
