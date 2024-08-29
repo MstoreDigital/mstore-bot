@@ -32,13 +32,15 @@ const commands = {
 			channelTypeInvalid: 'O comando não pode ser usado nesse canal.',
 			closureReasonRequestMessage: 'Por favor, informe o motivo do encerramento do ticket:',
 			historyMessage: 
-				'**Ticket ID:** {id}'+
-				'\n\n**Data do atendimento:** `{createdAt}`'+
-				'\n**Usuário:** `@{username}` \ `ID: {userId}`'+
-				'\n**Moderador responsável:** `@{userTag}` \ `ID: {moderatorId}`'+
-				'\n**Motivo de encerramento:** ```{reason}```',
-			channelNotFound: 'Não foi possível encontrar o canal de histórico.',
-			reasonNotProvided: 'Você não forneceu um motivo para o encerramento do ticket. O canal não será fechado.'
+				'**Ticket ID: ** {id}'+
+				'\n\n**Nome do canal: ** `{channelName}`'+
+				'\n**Data do atendimento: ** `{createdAt}`'+
+				'\n**Usuário: ** {username}'+
+				'\n**Moderador responsável: ** {moderatorName}'+
+				'\n**Atendimento encerrado por: ** {closedBy}'+
+				'\n**Motivo de encerramento: ** ```{reason}```',
+			moderatorUnknown: 'Não atribuído',
+			ticketClosed: "Atendimento encerrado com sucesso! O canal será fechado em 5 segundos."
 		}
 	}
 }
