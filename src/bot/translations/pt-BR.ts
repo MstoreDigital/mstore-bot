@@ -44,7 +44,7 @@ const commands = {
 		},
 		giveUp: {
 			channelTypeInvalid: 'O comando não pode ser usado nesse canal.',
-			userNotFound: 'O usuário não foi encontrado',
+			userUnauthorized: 'Você não tem permissão para executar esse comando.',
 			giveUpMessage: 
 				'**Desistência - Ticket ID: ** {id}'+
 				'\n\n**Nome do canal: ** `{channelName}`'+
@@ -52,8 +52,14 @@ const commands = {
 				'\n**Usuário: ** {username}'+
 				'\n**Usuário que desistiu: ** {UserWhoGaveUp}'+
 				'\n**Motivo da desistência: ** ```{reason}```',
-			successMessage: 'Você saiu desse atendimento',
-			removeFailed: 'Falha ao remover'
+			successMessage: 'O membro do suporte {moderator} desistiu do atendimento, seu chamado será reaberto e em breve você será atendido.',
+			removeFailed: 'Falha ao remover',
+			supportMessage:
+					'# Chamado reaberto: help-{userId}'+
+					'\n\nIdioma: `{language}`'+
+					'\nProduto: `{product}`'+
+					'\nTipo de problema: `{problemType}`'+
+					'\nDescrição do problema: ```{problemDescription}```'
 		}
 	}
 }

@@ -44,7 +44,7 @@ const commands = {
 		},
 		giveUp: {
 			channelTypeInvalid: 'The command cannot be used in this channel.',
-			userNotFound: 'The user was not found',
+			userUnauthorized: 'You do not have permission to execute this command.',
 			giveUpMessage: 
 				'**Withdrawal - Ticket ID: ** {id}'+
 				'\n\n**Channel name: ** `{channelName}`'+
@@ -52,8 +52,14 @@ const commands = {
 				'\n**User: ** {username}'+
 				'\n**User who gave up: ** {UserWhoGaveUp}'+
 				'\n**Reason for withdrawal: ** ```{reason}```',
-			successMessage: 'You have left this support session.',
-			removeFailed: 'Failed to remove'
+			successMessage: 'The support member {moderator} has given up on the support, your ticket will be reopened, and you will be assisted shortly.',
+			removeFailed: 'Failed to remove',
+			supportMessage:
+					'# Ticket reopened: help-{userId}'+
+					'\n\nLanguage: `{language}`'+
+					'\nProduct: `{product}`'+
+					'\nProblem type: `{problemType}`'+
+					'\nProblem description: ```{problemDescription}```'
 		}
 	}
 }
