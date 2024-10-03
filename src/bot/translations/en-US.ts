@@ -41,6 +41,25 @@ const commands = {
 				'\n**Reason for closure: ** ```{reason}```',
 			moderatorUnknown: 'Not assigned',
 			ticketClosed: "Support closed successfully! The channel will be closed in 5 seconds."
+		},
+		giveUp: {
+			channelTypeInvalid: 'The command cannot be used in this channel.',
+			userUnauthorized: 'You do not have permission to execute this command.',
+			giveUpMessage: 
+				'**Withdrawal - Ticket ID: ** {id}'+
+				'\n\n**Channel name: ** `{channelName}`'+
+				'\n**Date of service: ** `{createdAt}`'+
+				'\n**User: ** {username}'+
+				'\n**User who gave up: ** {UserWhoGaveUp}'+
+				'\n**Reason for withdrawal: ** ```{reason}```',
+			successMessage: 'The support member {moderator} has given up on the support, your ticket will be reopened, and you will be assisted shortly.',
+			removeFailed: 'Failed to remove',
+			supportMessage:
+					'# Ticket reopened: help-{userId}'+
+					'\n\nLanguage: `{language}`'+
+					'\nProduct: `{product}`'+
+					'\nProblem type: `{problemType}`'+
+					'\nProblem description: ```{problemDescription}```'
 		}
 	}
 }

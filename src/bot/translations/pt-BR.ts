@@ -41,6 +41,25 @@ const commands = {
 				'\n**Motivo de encerramento: ** ```{reason}```',
 			moderatorUnknown: 'Não atribuído',
 			ticketClosed: "Atendimento encerrado com sucesso! O canal será fechado em 5 segundos."
+		},
+		giveUp: {
+			channelTypeInvalid: 'O comando não pode ser usado nesse canal.',
+			userUnauthorized: 'Você não tem permissão para executar esse comando.',
+			giveUpMessage: 
+				'**Desistência - Ticket ID: ** {id}'+
+				'\n\n**Nome do canal: ** `{channelName}`'+
+				'\n**Data do atendimento: ** `{createdAt}`'+
+				'\n**Usuário: ** {username}'+
+				'\n**Usuário que desistiu: ** {UserWhoGaveUp}'+
+				'\n**Motivo da desistência: ** ```{reason}```',
+			successMessage: 'O membro do suporte {moderator} desistiu do atendimento, seu chamado será reaberto e em breve você será atendido.',
+			removeFailed: 'Falha ao remover',
+			supportMessage:
+					'# Chamado reaberto: help-{userId}'+
+					'\n\nIdioma: `{language}`'+
+					'\nProduto: `{product}`'+
+					'\nTipo de problema: `{problemType}`'+
+					'\nDescrição do problema: ```{problemDescription}```'
 		}
 	}
 }
